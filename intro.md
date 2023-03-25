@@ -6,7 +6,7 @@ Tipicamente durante l'esecuzione di una tranzaizone il database potrebbe produrr
 
 Se una transazione viene eseguita con esito positivo signirica che tutte le istruzioni SQL sono state oggetto di una COMMIT (Salvate).
 
-In sistemi multi-utente con diverse operazioni che vengono eseguite nello stesso momento è importante garantire la consistenza dei dati durante queste transazioni e nel caso di problemi avere gli struemnti per attuare una strategia di "recovery".
+In sistemi multi-utente con diverse operazioni che vengono eseguite nello stesso momento è importante garantire la consistenza dei dati durante queste transazioni e nel caso di problemi avere gli strumenti per attuare una strategia di "recovery".
 
 ## Le proprietà di una transazione (ACID)
 
@@ -46,7 +46,7 @@ MySQL gestisce quattro tipi di locking:
 - **Intent locks**: questo tipo di lock è usato per permettere a una transazione di specificare che leggerà o scriverà una certa porzione di dati.
 - **Row-level locks**: permette a una transazione di effettuare il lock a livello di singola riga invece che fare un lock sull'intera tabella.
 
-La concorrenza invece è un metodo applicato per permettere a più transazioni di essere eseguite simultaneamente senza interferenze tra una e l'altra. MySQL usa la "multi-version concurrency control (MVCC) che permette a più transazioni di leggere e scrivere gli stessi dati nello stesso momento senza conflitti.
+La concorrenza invece è un metodo applicato per permettere a più transazioni di essere eseguite simultaneamente senza interferenze tra una e l'altra. MySQL usa la "multi-version concurrency control" (MVCC) che permette a più transazioni di leggere e scrivere gli stessi dati nello stesso momento senza conflitti.
 
 Sono sicuro che ti starai chiedendo come questo possa essere raggiunto. Bene, ogni transazione acquisisce i dati che sta per modificare all'inizio della transazione e scrive le sue modifiche in una versione completamente diversa dei dati. Ciò consente ad altre transazioni di continuare a lavorare con la versione originale dei dati senza conflitti.
 

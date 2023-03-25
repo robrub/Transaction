@@ -17,7 +17,7 @@ START TRANSACTION;
     -- Se si verifica un errore viene chiamato questo blocco 
     -- `DECLARE EXIT HANDLER FOR SQLEXCEPTION` e vengono eseguite le istruzioni al suo interno (un ROLLBACK).
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
-        START TRANSACTION
+        BEGIN;
             ROLLBACK;
             RESIGNAL; -- Resstituisce l'eccezione al chiamante (in questo caso il client MySQL)
         END;
