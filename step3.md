@@ -11,22 +11,17 @@ Vediamo un esempio:
 ```sql
 CREATE DEFINER=`root`@`%` PROCEDURE `transazione`()
 BEGIN
-    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN
-            ROLLBACK;
-            RESIGNAL; -- Resstituisce l'eccezione al chiamante (in questo caso il client MySQL)
-    END;
-    -- Inizio transazione
-    START TRANSACTION;
-
     -- Definiamo un blocco per gestire il "catch" dell'eccezione
     -- che si potrebbe verificare.
     -- Se si verifica un errore viene chiamato questo blocco 
     -- `DECLARE EXIT HANDLER FOR SQLEXCEPTION` e vengono eseguite le istruzioni al suo interno (un ROLLBACK).
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-        BEGIN;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
             ROLLBACK;
             RESIGNAL; -- Resstituisce l'eccezione al chiamante (in questo caso il client MySQL)
-        END;
+    END;
+
+    -- Inizio transazione
+    START TRANSACTION;
 
         -- Inserimento di un nuovo utente che non esiste nella tabella
     INSERT INTO users(username, email, service_type) 
@@ -47,7 +42,7 @@ Prendiamo il seguente script dove in una nondizione particolare vogliamo che la 
 ```sql
 CREATE DEFINER=`root`@`%` PROCEDURE `transazione`()
 BEGIN
-    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
             ROLLBACK;
             RESIGNAL; -- Resstituisce l'eccezione al chiamante (in questo caso il client MySQL)
     END;
