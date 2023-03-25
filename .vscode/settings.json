@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [ {
+        "mysqlOptions": {
+          "authProtocol": "default",
+          "ssl": true
+        },
+        "previewLimit": 50,
+        "server": "fsd.mysql.database.azure.com",
+        "port": 3306,
+        "driver": "MySQL",
+        "name": "Azure TTF FSD1",
+        "username": "adminroot",
+        "database": "transaction_tutorial",
+        "connectionMethod": "Server and Port",
+        "usePassword": "SQLTools Driver Credentials"
+      }]
+}
