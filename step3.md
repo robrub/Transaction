@@ -9,7 +9,7 @@ In MySQL SIGNAL e RESIGNAL sono le istruzioni che permettono di gestire gli erro
 Vediamo un esempio:
 
 ```sql
-CREATE DEFINER=`root`@`%` PROCEDURE `transazione`()
+CREATE PROCEDURE `transazione`()
 BEGIN
     -- Definiamo un blocco per gestire il "catch" dell'eccezione
     -- che si potrebbe verificare.
@@ -40,7 +40,7 @@ Possiamo anche inserire della logica applicativa per gestire le eccezioni che no
 Prendiamo il seguente script dove in una nondizione particolare vogliamo che la transazione venga annullata e scatenare un'eccezione:
 
 ```sql
-CREATE DEFINER=`root`@`%` PROCEDURE `transazione`()
+CREATE PROCEDURE `transazione`()
 BEGIN
     DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
             ROLLBACK;
