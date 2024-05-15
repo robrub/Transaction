@@ -2,7 +2,7 @@
 
 Le subquery in SQL sono query annidate all'interno di un'altra query. Possono essere utilizzate per restituire dati che verranno utilizzati nella query principale come un valore temporaneo. Le subquery possono essere molto utili per eseguire operazioni complesse, come il filtraggio dei dati in base ai risultati di un'altra query.
 
-## Esmpio 1
+## Esempio 1
 
 Subquery in una clausola WHERE: Questo tipo di subquery viene utilizzato per filtrare i risultati della query principale.
 
