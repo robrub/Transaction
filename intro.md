@@ -2,9 +2,9 @@
 
 E' possibile immaginare una transazione come un contenitore per l'esecuzione di istruzioni SQL multiple (INSERT, UPDATE, SELECT, DELETE).
 
-Tipicamente durante l'esecuzione di una tranzaizone il database potrebbe produrre (o lavorare) su dati inconsistenti perchè è possibile che durante l'esecuzione di pù estruzione SQL i dati del database potrebbero subire delle modifiche (dati inconsistenti).
+Tipicamente durante l'esecuzione di una tranzaizone il database potrebbe produrre (o lavorare) su dati inconsistenti perchè è possibile che durante l'esecuzione di più di un'istruzione SQL i dati del database potrebbero subire delle modifiche (dati inconsistenti).
 
-Se una transazione viene eseguita con esito positivo signirica che tutte le istruzioni SQL sono state oggetto di una COMMIT (Salvate).
+Se una transazione viene eseguita con esito positivo significa che tutte le istruzioni SQL sono state oggetto di una COMMIT (Salvate).
 
 In sistemi multi-utente con diverse operazioni che vengono eseguite nello stesso momento è importante garantire la consistenza dei dati durante queste transazioni e nel caso di problemi avere gli strumenti per attuare una strategia di "recovery".
 
@@ -48,7 +48,7 @@ MySQL gestisce quattro tipi di locking:
 
 La concorrenza invece è un metodo applicato per permettere a più transazioni di essere eseguite simultaneamente senza interferenze tra una e l'altra. MySQL usa la "multi-version concurrency control" (MVCC) che permette a più transazioni di leggere e scrivere gli stessi dati nello stesso momento senza conflitti.
 
-Sono sicuro che ti starai chiedendo come questo possa essere raggiunto. Bene, ogni transazione acquisisce i dati che sta per modificare all'inizio della transazione e scrive le sue modifiche in una versione completamente diversa dei dati. Ciò consente ad altre transazioni di continuare a lavorare con la versione originale dei dati senza conflitti.
+Ogni transazione acquisisce i dati che sta per modificare all'inizio della transazione e scrive le sue modifiche in una versione completamente diversa dei dati. Ciò consente ad altre transazioni di continuare a lavorare con la versione originale dei dati senza conflitti.
 
 **Per implementare la concorrenza e non incorrere in conflitti è importante progettare e implementare transazioni più brevi possibili il cui tempo di esecuzione sia limitato nel tempo.**
 
